@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package logistica;
+
+option go_package = "./proto/;logistica";
+
+service LogisticaService {
+  rpc RegistrarOrden (OrdenRequest) returns (OrdenResponse);
+  rpc ConsultarEstado (EstadoRequest) returns (EstadoResponse);
+}
+
+message OrdenRequest {
+  string cliente = 1;
+  string tipo_caravana = 2;
+  string destino = 3;
+  string tipo_suministro = 4;
+  int32 valor_suministro = 5;
+}
+
+message OrdenResponse {
+  string codigo_seguimiento = 1;
+  string mensaje = 2;
+}
+
+message EstadoRequest {
+  string codigo_seguimiento = 1;
+}
+
+message EstadoResponse {
+  string estado = 1;
+  string mensaje = 2;
+}
